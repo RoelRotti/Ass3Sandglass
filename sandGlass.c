@@ -6,15 +6,6 @@
 /* Description: 											*/
 
 
-
-int main(int argc, char *argv[]) {
-
-
-
-
-	return 0;
-}
-
 /* sandglassSetup.c, 29 January 2014
  * 
  * This is the setup for the practical assignment Sandglasses.
