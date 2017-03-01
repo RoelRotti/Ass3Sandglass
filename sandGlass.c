@@ -16,6 +16,12 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#define TURN_NOTHING 1
+#define TURN_A 2
+#define TURN_B 3
+#define TURN_BOTH 4
+
+
 /* First the type definitions.
  */
 
@@ -131,18 +137,67 @@ void freeQueue (Queue q) {
 }
 
 /* The function action generates a new state from an existing state.
+	General idea:
+		-check outcome for all states (1,2,3,4)
+		-if goal state: print solvable
+		-if under goal state: add to queue
+		-if over goal state: do nothing
+
+
+	States:
+ 	1. turn no sandglass 
+	2. turn only sandglass A 
+	3. turn only sandglass B
+	4. turn both sandglasses A and B
+
  */
 
-State action(State s, /* ... */ ) {
+State action(State s, int action ) {
+	switch(action){
+		case TURN_NOTHING: 
+			
+		case TURN_A:
+			
+		case TURN_B:
+
+		case TURN_BOTH:
+
+	}
 		  /* ... */
 }
 
 /* The function timeable checks whether a given time can be determined
  * exactly by two sandglasses with given capacities.
+ * General idea:
+ 	-generate all states possible from a state (where at least 1 sandglass == 0)
+ 	-if turning one/both sandglass does not exceed the goal state, create new states and add to queue
+ 	-if goal state is reached: print solvable
+ 	-if all states pass the goal state print NOT solvable
  */
 
 int timeable(int cap1, int cap2, int goalTime) { 
- 		/* ... */
+		int time = 0; 
+		// check for simplest cases
+ 		if(cap1 == goalTime || cap2 == goalTime || goaltime == 0 || goaltime%cap1 == 0 || goaltime%cap2 == 0)
+ 		{
+ 			return 1;
+ 		}
+
+ 		// create empty queue
+ 		newEmptyQueue();
+
+ 		State start = {0,0,0};
+
+ 		// start checking all states
+ 		while(time <= goalTime)
+ 		{
+ 			enqueue(action(State s, TURN_NOTHING), *qp);
+
+ 			time++;
+ 		}
+
+
+
 }
 
 /* main performs a dialogue with the user. The user is asked to provide three numbers: 
@@ -155,14 +210,17 @@ int main(int argc, char *argv[]){
 		  int cap1, cap2, goalTime; 
 		  printf("give the sandglass capacities and the goal time: ");
 		  scanf("%d",&cap1);
-		  while ( cap1 > 0 ) {
+		  while ( cap1 > 0 ) 
+		  {
 		    scanf("%d",&cap2);
 		    assert( cap2 > 0 );
 		    scanf("%d",&goalTime);
 		    assert( goalTime >= 0 );
-		    if ( timeable(cap1,cap2,goalTime) ) {
+		    if ( timeable(cap1,cap2,goalTime) ) 
+		    {
 		      printf("%d and %d can time %d\n", cap1, cap2, goalTime);
-		    } else {
+		    } else 
+		    {
 		      printf("%d and %d cannot time %d\n", cap1, cap2, goalTime);
 		    }
 		    printf("\ngive the sandglass capacities and the goal time: ");
