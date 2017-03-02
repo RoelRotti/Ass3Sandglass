@@ -155,13 +155,13 @@ void freeQueue (Queue q) {
 State action(State s, int action ) {
 	switch(action){
 		case TURN_NOTHING: 
-			
+			return s;
 		case TURN_A:
-			
+			return s;
 		case TURN_B:
-
+			return s;
 		case TURN_BOTH:
-
+			return s;
 	}
 		  /* ... */
 }
@@ -178,7 +178,7 @@ State action(State s, int action ) {
 int timeable(int cap1, int cap2, int goalTime) { 
 		int time = 0; 
 		// check for simplest cases
- 		if(cap1 == goalTime || cap2 == goalTime || goaltime == 0 || goaltime%cap1 == 0 || goaltime%cap2 == 0)
+ 		if(cap1 == goalTime || cap2 == goalTime || goalTime == 0 || goalTime%cap1 == 0 || goalTime%cap2 == 0)
  		{
  			return 1;
  		}
@@ -188,10 +188,12 @@ int timeable(int cap1, int cap2, int goalTime) {
 
  		State start = {0,0,0};
 
+ 		enqueue(start, NULL);
+
  		// start checking all states
  		while(time <= goalTime)
  		{
- 			enqueue(action(State s, TURN_NOTHING), *qp);
+ 			enqueue(action(State s, TURN_NOTHING), q);
 
  			time++;
  		}
