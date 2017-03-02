@@ -25,6 +25,8 @@
  * in queues.c. Do not forget the inclusion guard around the header.
  */
 
+ /* this is the inclusion guard */
+
 #ifndef QUEUES_H
 #define QUEUES_H
 #include "queues.h"
