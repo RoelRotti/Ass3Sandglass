@@ -19,36 +19,21 @@
  * so that you will be able to compile your program with 
  * gcc -ansi -Wall *.c
 */ 
-#include gcc -ansi -Wall *.c
+
 
 /* Add the type definitions of the functions 
  * in queues.c. Do not forget the inclusion guard around the header.
  */
-#include inclusion guard
+
+#ifndef QUEUES_H
+#define QUEUES_H
+#include "queues.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 
-/* First the type definitions.
- */
-
-typedef struct State { /* a state contains a time and the states of the two sandglasses */
-		  int time;
-		  int sg1, sg2;
-} State;
-
-typedef struct ListNode *List;  /* List is the type of lists of states */
-
-struct ListNode {
-		  State item;
-		  List next;
-};
-
-typedef struct Queue { /* a queue is a list and a pointer to the last node */
-		  List list;
-		  List lastNode;
-} Queue;
 
 /* We use the functions on lists as defined in 1.3 of the lecture notes.
  */

@@ -16,11 +16,14 @@
  * so that you will be able to compile your program with 
  * gcc -ansi -Wall *.c
 */ 
-#include gcc -ansi -Wall *.c
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include "queues.c"
+
+
 
 #define TURN_NOTHING 1
 #define TURN_A 2
@@ -57,7 +60,7 @@ State action(State s, int action ) {
 		case TURN_BOTH:
 			return s;
 	}
-		  /* ... */
+	return s;
 }
 
 /* The function timeable checks whether a given time can be determined
@@ -70,29 +73,15 @@ State action(State s, int action ) {
  */
 
 int timeable(int cap1, int cap2, int goalTime) { 
-		int time = 0; 
+		//int time = 0; 
 		// check for simplest cases
  		if(cap1 == goalTime || cap2 == goalTime || goalTime == 0 || goalTime%cap1 == 0 || goalTime%cap2 == 0)
  		{
  			return 1;
  		}
 
- 		// create empty queue
- 		newEmptyQueue();
-
- 		State start = {0,0,0};
-
- 		enqueue(start, NULL);
-
- 		// start checking all states
- 		while(time <= goalTime)
- 		{
- 			enqueue(action(State s, TURN_NOTHING), q);
-
- 			time++;
- 		}
-
-
+ 	
+return 0;
 
 }
 
