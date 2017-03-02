@@ -10,6 +10,8 @@
  * the other functions.
  */
 
+/*/////////////////// ASK THIS /////////////////////*/
+
 /* 3. Create a file queues.h and put all type definitions from the 
  * file queues.c in it. Add the type definitions of the functions 
  * in queues.c. Do not forget the inclusion guard around the header.
@@ -27,10 +29,9 @@
 
  /* this is the inclusion guard */
 
-#ifndef QUEUES_H
-#define QUEUES_H
+
 #include "queues.h"
-#endif
+
 
 #include <stdio.h>
 #include <stdlib.h>

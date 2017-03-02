@@ -11,9 +11,15 @@
  * in queues.c. Do not forget the inclusion guard around the header.
  */
 
+#ifndef QUEUES_H
+#define QUEUES_H
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+
+
 
 /* First the type definitions.
  */
@@ -34,3 +40,13 @@ typedef struct Queue { /* a queue is a list and a pointer to the last node */
 		  List list;
 		  List lastNode;
 } Queue;
+
+Queue newEmptyQueue ();
+
+void enqueue (State s, Queue *qp);
+
+State dequeue(Queue *qp);
+
+void freeQueue (Queue q);
+
+#endif
