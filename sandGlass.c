@@ -60,6 +60,7 @@ State action(State s, int action ) {
 		case TURN_BOTH:
 			return s;
 	}
+	/* Nothing happend to the current state. */
 	return s;
 }
 
@@ -73,7 +74,10 @@ State action(State s, int action ) {
  */
 
 int timeable(int cap1, int cap2, int goalTime) { 
-		//int time = 0; 
+		/* This is the starting state */
+		State start = {0,0,0};
+
+
 		// check for simplest cases
  		if(cap1 == goalTime || cap2 == goalTime || goalTime == 0 || goalTime%cap1 == 0 || goalTime%cap2 == 0)
  		{
