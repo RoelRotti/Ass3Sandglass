@@ -30,7 +30,12 @@
 #define TURN_B 3
 #define TURN_BOTH 4
 
-
+State fillState(int time, int timeA, int timeB){
+			State newState;
+			newState.time = time;
+			newState.sg1 = timeA;
+			newState.sg2 = timeB;
+}
 
 
 /* The function action generates a new state from an existing state.
@@ -50,18 +55,19 @@
  */
 
 State action(State s, int action, int cap1, int cap2 ) {
-	switch(action){
-		case TURN_NOTHING: 
-			return s;
-		case TURN_A:
-			return s;
-		case TURN_B:
-			return s;
-		case TURN_BOTH:
-			return s;
-	}
-	/* Nothing happend to the current state. */
-	return s;
+		switch(action){
+			case TURN_NOTHING:
+
+				return s;
+			case TURN_A:
+				return s;
+			case TURN_B:
+				return s;
+			case TURN_BOTH:
+				return s;
+		}
+		/* Nothing happend to the current state. */
+		return s;
 }
 
 /* The function timeable checks whether a given time can be determined
