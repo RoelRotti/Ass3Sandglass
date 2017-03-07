@@ -22,20 +22,12 @@
 #include <stdlib.h>
 #include <assert.h>
 
-
-
-
 #define TURN_NOTHING 1
 #define TURN_A 2
 #define TURN_B 3
 #define TURN_BOTH 4
 
-State fillState(int time, int timeA, int timeB){
-			State newState;
-			newState.time = time;
-			newState.sg1 = timeA;
-			newState.sg2 = timeB;
-}
+
 
 
 /* The function action generates a new state from an existing state.
@@ -54,20 +46,18 @@ State fillState(int time, int timeA, int timeB){
 
  */
 
-State action(State s, int action, int cap1, int cap2 ) {
-		switch(action){
-			case TURN_NOTHING:
-
-				return s;
-			case TURN_A:
-				return s;
-			case TURN_B:
-				return s;
-			case TURN_BOTH:
-				return s;
-		}
-		/* Nothing happend to the current state. */
-		return s;
+State action(State s, int action ) {
+	switch(action){
+		case TURN_NOTHING: 
+			return s;
+		case TURN_A:
+			return s;
+		case TURN_B:
+			return s;
+		case TURN_BOTH:
+			return s;
+	}
+		  /* ... */
 }
 
 /* The function timeable checks whether a given time can be determined
@@ -79,62 +69,30 @@ State action(State s, int action, int cap1, int cap2 ) {
  	-if all states pass the goal state print NOT solvable
  */
 
-
 int timeable(int cap1, int cap2, int goalTime) { 
-
-		/* check for simplest cases (goalTime == 0 or goaltime == (n*)cap1/(n*)cap2 )*/
- 		if(goalTime == 0 || goalTime%cap1 == 0 || goalTime%cap2 == 0)
+		int time = 0; 
+		// check for simplest cases
+ 		if(cap1 == goalTime || cap2 == goalTime || goalTime == 0 || goalTime%cap1 == 0 || goalTime%cap2 == 0)
  		{
  			return 1;
  		}
 
- 		/* This is the starting state */
-		State start = {0,0,0};
+ 		// create empty queue
+ 		newEmptyQueue();
 
- 		/* create a new queue */
- 		Queue q = newEmptyQueue();
+ 		State start = {0,0,0};
 
- 		/* enqueue starting state */
- 		enqueue(start, &q);
+ 		enqueue(start, NULL);
 
- 		State reachedGoal;
-
- 		/* General idea: (loop)
- 			-dequeue
- 			-check if goal time is reached
- 			-yes: return 1
- 			-no: -perform all possible actions
- 				-enqueue all actions
- 			-repeat
- 		*/
-
- 		while(!isEmptyQueue();)
+ 		// start checking all states
+ 		while(time <= goalTime)
  		{
- 			/* dequeue first item to obtain new state */
- 			reachedGoal = dequeue(&q);
+ 			enqueue(action(State s, TURN_NOTHING), q);
 
- 			if(reachedGoal.time == goalTime)
- 			{
- 				return 1;
- 			} else if(reachedGoal.time < goalTime){
- 				/*	States:
-				 	1. turn no sandglass 
-					2. turn only sandglass A 
-					3. turn only sandglass B
-					4. turn both sandglasses A and B
-				 */
-
- 				if(reachedGoal.sg1 != 0 && reachedGoal.sg2 != 0)
-	 			{
-	 				enqueue(action(reachedGoal, 1, cap1, cap2), &q);
-	 			}
-	 				enqueue(action(reachedGoal, 2, cap1, cap2), &q);
-	 				enqueue(action(reachedGoal, 3, cap1, cap2), &q);
-	 				enqueue(action(reachedGoal, 4, cap1, cap2), &q);
-	 			}
+ 			time++;
  		}
 
-		return 0;
+
 
 }
 
@@ -145,11 +103,9 @@ int timeable(int cap1, int cap2, int goalTime) {
  */
 
 int main(int argc, char *argv[]){
-
 		  int cap1, cap2, goalTime; 
 		  printf("give the sandglass capacities and the goal time: ");
 		  scanf("%d",&cap1);
-
 		  while ( cap1 > 0 ) 
 		  {
 		    scanf("%d",&cap2);
