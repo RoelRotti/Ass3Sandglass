@@ -210,7 +210,7 @@ void insertUnique(State s, Queue *qp){
 			int compares;
 			List list = qp->list;
 
-			/* the first time this function is called a list is created */
+			/* the first time this function is called a list is made */
 			if (list == NULL)
 			{
 				list = addItem(s, NULL);
@@ -218,8 +218,8 @@ void insertUnique(State s, Queue *qp){
 				qp->lastNode = list;
 				return;
 			}
-			
 			/* Loops through the list until the right position is found */
+
 			while (list->next != NULL){
 				/* compare is the outcome of compare() */
 				compares = compare(s, list->next->item);
